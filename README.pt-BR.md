@@ -1,5 +1,7 @@
 # AI Contract Intelligence
 
+[![Testes](https://github.com/Henrxque/ai-contract-intelligence/actions/workflows/tests.yml/badge.svg)](https://github.com/Henrxque/ai-contract-intelligence/actions/workflows/tests.yml)
+
 Estudo de caso de engenharia de dados: contratos PDF entram em um pipeline com extração, validação, persistência SQL, rastreabilidade e entrega para revisão humana.
 
 [README em inglês](README.md) · [Estudo de caso](docs/CASE_STUDY.md) · [Arquitetura](docs/ARCHITECTURE.md) · [Operação](docs/RUNBOOK.md) · [Verificação](docs/VERIFICATION.md)
@@ -32,6 +34,8 @@ Na avaliação local com oito contratos fictícios, 76 de 88 valores corresponde
 Requer Python 3.11 ou superior.
 
 ```powershell
+git clone https://github.com/Henrxque/ai-contract-intelligence.git
+cd ai-contract-intelligence
 python -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.lock
 .venv\Scripts\python -m pip install --no-deps -e .
@@ -78,14 +82,9 @@ O código do adaptador está implementado e coberto por testes simulados. **Não
 
 ## GitHub
 
-O projeto inclui licença MIT, documentação, versões de dependências fixadas, exemplos fictícios e workflow de testes. A publicação precisa de uma conta autenticada no GitHub CLI:
+Publicado em [Henrxque/ai-contract-intelligence](https://github.com/Henrxque/ai-contract-intelligence), na branch `main`, com licença MIT, documentação, dependências fixadas, exemplos fictícios e testes automatizados.
 
-```sh
-gh auth login
-git add .
-git commit -m "Build evidence-backed contract intelligence portfolio app"
-gh repo create ai-contract-intelligence --public --source=. --remote=origin --push
-```
+Os 86 testes passaram no GitHub em Python 3.11, 3.13 e 3.14. [Execução verificada](https://github.com/Henrxque/ai-contract-intelligence/actions/runs/44801053478). O aplicativo continua sendo executado localmente; publicar o código no GitHub não hospeda a demonstração web.
 
 Não coloque chaves, documentos da Aon, código de empregadores ou contratos de clientes no repositório. O projeto foi construído com dados sintéticos e não depende de conteúdo profissional confidencial.
 

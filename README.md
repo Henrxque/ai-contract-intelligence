@@ -1,5 +1,7 @@
 # AI Contract Intelligence
 
+[![Tests](https://github.com/Henrxque/ai-contract-intelligence/actions/workflows/tests.yml/badge.svg)](https://github.com/Henrxque/ai-contract-intelligence/actions/workflows/tests.yml)
+
 **Engineering case study: contract PDFs → extraction → quality gates → SQL → review and delivery.**
 
 A reproducible document data pipeline with content-addressed ingestion, raw extraction staging, normalized SQL output, bounded recovery, and a measured synthetic benchmark. The browser interface makes the engineering inspectable: every field carries evidence, missing information remains `null`, and uncertainty survives delivery.
@@ -39,6 +41,8 @@ No accounts or external database service are required. The batch pipeline persis
 Requires Python 3.11 or later. The implementation was verified locally with Python 3.14.3.
 
 ```powershell
+git clone https://github.com/Henrxque/ai-contract-intelligence.git
+cd ai-contract-intelligence
 python -m venv .venv
 .venv\Scripts\python -m pip install -r requirements.lock
 .venv\Scripts\python -m pip install --no-deps -e .
@@ -119,7 +123,7 @@ Expected answers are authored in [the fixture builder](scripts/build_benchmark.p
 .venv\Scripts\python -m pytest -q
 ```
 
-Tests cover extraction, quality, PDFs, provider failures and export safety, plus database round trips, duplicate submissions, concurrent claims, expired-worker fencing, transactional rollback, retries, CLI execution and evaluation integrity. GitHub Actions is configured for Python 3.11, 3.13 and 3.14 and uploads an evaluation artifact; hosted CI results only exist after publication.
+Tests cover extraction, quality, PDFs, provider failures and export safety, plus database round trips, duplicate submissions, concurrent claims, expired-worker fencing, transactional rollback, retries, CLI execution and evaluation integrity. GitHub Actions passed all 86 tests on Ubuntu with Python 3.11, 3.13 and 3.14 and uploaded an evaluation artifact for each version. [Verified CI run](https://github.com/Henrxque/ai-contract-intelligence/actions/runs/44801053478).
 
 ## Architecture
 
@@ -180,17 +184,10 @@ docker build -t ai-contract-intelligence .
 docker run --rm -p 127.0.0.1:8000:8000 ai-contract-intelligence
 ```
 
-## Publish to GitHub
+## Repository
 
-Once GitHub CLI is authenticated, the following creates a public portfolio repository from this folder:
+Public source: [Henrxque/ai-contract-intelligence](https://github.com/Henrxque/ai-contract-intelligence). The default branch is `main`.
 
-```sh
-gh auth login
-git add .
-git commit -m "Build evidence-backed contract intelligence portfolio app"
-gh repo create ai-contract-intelligence --public --source=. --remote=origin --push
-```
-
-Suggested description: **Evidence-backed PDF contract extraction with structured LLM output, deterministic validation, human review, and JSON/CSV/Excel exports.**
+The repository contains the source, synthetic fixtures, measured evaluation, screenshots, SQL examples and CI workflow. The running web demonstration remains local; GitHub publication does not deploy the application.
 
 This repository demonstrates document automation and review-system engineering. It makes no claims about employer code, proprietary workflows, customer outcomes, or measured accuracy on real contracts.

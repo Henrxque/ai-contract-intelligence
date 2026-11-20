@@ -30,6 +30,12 @@ Verified locally on 2026-11-20, Windows, Python 3.14.3.
 
 The installed Starlette version emits a deprecation warning for its HTTPX test transport. Tests still pass; this warning does not indicate a failed application request.
 
+## GitHub publication and hosted CI
+
+Published on 2026-11-20 at [Henrxque/ai-contract-intelligence](https://github.com/Henrxque/ai-contract-intelligence), public, default branch `main`.
+
+[Hosted verification](https://github.com/Henrxque/ai-contract-intelligence/actions/runs/44801053478) passed all 86 tests on Ubuntu with Python 3.11, 3.13 and 3.14. All three jobs also ran the evaluation command and uploaded their JSON reports. Original PDF hashes were checked against the frozen manifest before publication, and `.gitattributes` preserves PDF bytes across platforms.
+
 ## Manual browser verification
 
 - Uploaded the actual Meridian PDF through the browser file chooser: eleven fields, checks passed.
@@ -52,5 +58,4 @@ The installed Starlette version emits a deprecation warning for its HTTPX test t
 - Live paid OpenAI extraction: no configured provider key was used.
 - Extraction accuracy on real-world contract datasets: not measured.
 - Docker build: Docker is not available in the checked environment.
-- GitHub-hosted CI: workflow configured, not run before repository publication.
 - Public deployment, production load, hostile-PDF isolation and multiuser security: outside this local portfolio version.
