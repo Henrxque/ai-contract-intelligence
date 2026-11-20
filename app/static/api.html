@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>API reference — Contract Intelligence</title>
+    <link rel="icon" href="/static/favicon.svg" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/api.css" />
+  </head>
+  <body>
+    <main class="reference">
+      <a class="button button-outline" href="/">Back to workspace</a>
+      <div class="eyebrow">AI CONTRACT INTELLIGENCE / API v0.2</div>
+      <h1>Built to be inspected.</h1>
+      <p class="reference-lead">
+        A local HTTP API for transient PDF review, durable batch processing, SQL
+        lineage, extraction evaluation and exports.
+      </p>
+      <a
+        class="button button-primary"
+        href="/openapi.json"
+        target="_blank"
+        rel="noopener"
+        >View OpenAPI schema</a
+      >
+      <section>
+        <h2>Analyze a PDF</h2>
+        <div class="endpoint">
+          <strong>POST</strong><code>/api/analyze</code>
+        </div>
+        <p>
+          Multipart form data. <code>file</code> is required;
+          <code>mode</code> is <code>local</code> (default) or
+          <code>openai</code>. Limit: 10 MB, 40 pages and 120,000 extracted
+          characters.
+        </p>
+        <pre>
+curl -X POST http://127.0.0.1:8000/api/analyze \
+  -F "file=@app/samples/northstar-services.pdf" \
+  -F "mode=local"</pre
+        >
+        <p>
+          <strong>Local rules:</strong> matches supported English and Portuguese
+          labels followed by a colon on one line. Unrecognized wording can be
+          missed. <strong>OpenAI:</strong> requires server configuration and
+          transmits extracted text to the provider; choosing this mode
+          explicitly requests that transmission.
+        </p>
+      </section>
+      <section>
+        <h2>Try a synthetic sample</h2>
+        <div class="endpoint"><strong>POST</strong><code>/api/demo</code></div>
+        <p>
+          JSON body with <code>sample</code>: <code>review</code>,
+          <code>complete</code> or <code>invalid</code>. Uses the same PDF
+          reader, local extractor and validation pipeline as uploads.
+        </p>
+        <pre>
+curl -X POST http://127.0.0.1:8000/api/demo \
+  -H "Content-Type: application/json" \
+  -d '{"sample":"review"}'</pre
+        >
+        <p>
+          <code>GET /api/samples/{sample}</code> downloads the corresponding
+          fictional PDF.
+        </p>
+      </section>
+      <section>
+        <h2>Export an analysis</h2>
+        <div class="endpoint">
+          <strong>POST</strong><code>/api/export/{format}</code>
+        </div>
+        <p>
+          Pass the full analysis JSON as the request body. Available formats:
+          <code>json</code>, <code>csv</code>, <code>xlsx</code>. Response is a
+          downloadable attachment.
+        </p>
+        <pre>
+curl -X POST http://127.0.0.1:8000/api/export/xlsx \
+  -H "Content-Type: application/json" \
+  --data-binary @analysis.json -o analysis.xlsx</pre
+        >
+        <p>
+          Exports preserve field statuses, issues and evidence. Excel includes
+          separate sheets for fields, findings and extraction metadata. This
+          endpoint transforms the submitted data; it does not certify it or
+          retrieve a saved result.
+        </p>
+      </section>
+      <section>
+        <h2>Understand field states</h2>
+        <dl class="state-list">
+          <dt>supported</dt>
+          <dd>
+            Format checks passed, evidence quotes match their claimed pages, and
+            the value matches a quote. This is not a guarantee of semantic
+            correctness.
+          </dd>
+          <dt>missing</dt>
+          <dd>
+            No explicit value extracted. Required gaps block passing checks;
+            optional gaps remain in findings and exports.
+          </dd>
+          <dt>uncertain</dt>
+          <dd>
+            Ambiguous wording, conflicting candidates, or evidence that cannot
+            support the claimed value.
+          </dd>
+          <dt>invalid</dt>
+          <dd>
+            A value failed a deterministic check, such as a negative amount,
+            impossible date, or end date before the start.
+          </dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Durable batch processing and lineage</h2>
+        <p>
+          <a href="/pipeline">Open the pipeline workspace</a> or use these
+          endpoints:
+        </p>
+        <p>
+          <code>POST /api/pipeline/demo</code> persists the three fictional demo
+          contracts. Repeating the request reuses matching successful runs.
+        </p>
+        <p>
+          <code>POST /api/pipeline/batches</code> accepts multipart
+          <code>files</code>, <code>mode</code>,
+          <code>persist_consent=true</code> and, for OpenAI,
+          <code>provider_consent=true</code>. Maximum ten files and 10 MB
+          combined. It stores original PDFs, text, extraction and results in
+          local SQLite.
+        </p>
+        <p>
+          <code>GET /api/pipeline/summary</code> reports persisted counts and
+          recent runs. <code>GET /api/pipeline/batches/{batch_id}</code> returns
+          item outcomes.
+        </p>
+        <p>
+          <code>GET /api/pipeline/runs/{run_id}/lineage</code> returns run
+          configuration, attempts and raw staging.
+          <code>GET /api/pipeline/runs/{run_id}/result</code> returns the
+          committed analysis for review or export.
+        </p>
+        <p>
+          <code>POST /api/pipeline/runs/{run_id}/retry</code> explicitly retries
+          failed or resumes queued/expired runs, bounded to three attempts.
+          Active leases return <code>in_progress</code>; completed runs return
+          cached outcomes.
+        </p>
+        <p>
+          <code>GET /api/evaluation</code> returns the measured local-rule
+          development benchmark with per-field mismatches. It is not a live LLM
+          accuracy report.
+        </p>
+      </section>
+      <section>
+        <h2>Actionable errors</h2>
+        <p>
+          Errors use a stable envelope. Raw contract data and provider error
+          details are not echoed in validation responses.
+        </p>
+        <pre>
+{
+  "error": {
+    "code": "ocr_required",
+    "message": "No usable text layer was found. Scanned PDFs need OCR before upload."
+  }
+}</pre
+        >
+        <p>
+          <code>422</code> invalid/unreadable input · <code>413</code> size
+          limit · <code>429</code> provider quota · <code>502</code> provider
+          failure · <code>503</code> provider configuration ·
+          <code>504</code> provider timeout.
+        </p>
+      </section>
+      <section>
+        <h2>Health and boundaries</h2>
+        <div class="endpoint"><strong>GET</strong><code>/api/health</code></div>
+        <p>
+          Returns application status, configured AI availability and PDF limits.
+          No secrets are returned.
+        </p>
+        <p>
+          This portfolio application binds to loopback by default. It has no
+          accounts, OCR or legal reasoning. Individual review is transient;
+          batch mode persists original PDFs and processing data in local SQLite.
+          Uploaded files may be temporarily spooled by the multipart framework.
+          Browser results are kept in memory until refresh. Add authentication,
+          workload isolation, body limits at a reverse proxy and an explicit
+          data policy before any public deployment.
+        </p>
+      </section>
+      <footer class="page-footer">
+        AI Contract Intelligence · Evidence-backed extraction, with explicit
+        limits.
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An engineering case study: PDF ingestion, AI-ready extraction, deterministic quality checks, SQL lineage, and measured failure cases."
+    />
+    <title>Contract data pipeline — Engineering case study</title>
+    <link rel="icon" href="/static/favicon.svg" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/engineering.css" />
+    <script src="/static/case-study.js" defer></script>
+  </head>
+  <body class="engineering-page">
+    <header class="engineering-nav">
+      <a href="/case-study" class="engineering-brand"
+        ><span class="engineering-monogram">CI</span
+        ><span
+          >Contract Intelligence<small>DATA ENGINEERING CASE STUDY</small></span
+        ></a
+      >
+      <nav aria-label="Project navigation">
+        <a href="/case-study" aria-current="page">Case study</a
+        ><a href="/pipeline">Pipeline</a><a href="/">Document review</a
+        ><a href="/docs">API</a>
+      </nav>
+    </header>
+    <main class="engineering-main">
+      <section class="case-hero">
+        <div>
+          <div class="eyebrow">DOCUMENT AUTOMATION / PYTHON + SQL + AI</div>
+          <h1>From contract PDFs<br />to data you can audit<span>.</span></h1>
+          <p class="case-lead">
+            An end-to-end document pipeline with explicit quality gates, source
+            evidence, and recoverable processing. Built to make the failures
+            inspectable, too.
+          </p>
+          <div class="case-actions">
+            <a class="button button-primary" href="/pipeline"
+              >Run the pipeline</a
+            ><a class="button button-outline" href="/">Inspect a contract</a>
+          </div>
+          <p class="case-disclosure">
+            Independent portfolio project · Fictional documents · No client
+            performance claims
+          </p>
+        </div>
+        <div class="case-artifact">
+          <div class="artifact-topline">
+            <span class="artifact-file">NORTHSTAR / FICTIONAL SAMPLE</span
+            ><span class="badge needs_review">Needs review</span>
+          </div>
+          <div class="artifact-source">
+            <span class="artifact-label">SOURCE · PAGE 1</span>
+            <p>
+              “Payment terms: Within 30 or 60 days of invoice, to be confirmed.”
+            </p>
+          </div>
+          <div class="artifact-output">
+            <span class="artifact-label">STRUCTURED OUTPUT</span>
+            <pre>
+{
+  "payment_terms": {
+    "value": "Within 30 or 60 days…",
+    "status": "uncertain"
+  },
+  "end_date": {
+    "value": null,
+    "status": "missing"
+  }
+}</pre
+            >
+          </div>
+          <div class="artifact-caption">
+            Display excerpt. Full values and evidence remain in the analysis.
+          </div>
+        </div>
+      </section>
+      <section class="case-context">
+        <div>
+          <div class="eyebrow">THE PROBLEM</div>
+          <h2>The PDF is only the beginning.</h2>
+        </div>
+        <p>
+          A team receives contracts with names, dates, values and payment
+          conditions buried in text. Moving those values into a spreadsheet is
+          useful only if missing information, contradictory clauses, and
+          extraction mistakes remain visible. This project reconstructs that
+          workflow using synthetic data.
+        </p>
+      </section>
+      <section class="case-section">
+        <div class="section-kicker">THE ENGINEERING</div>
+        <h2>One workflow. A traceable path through every stage.</h2>
+        <p class="section-description">
+          Select a stage to see its responsibility and the implementation behind
+          it.
+        </p>
+        <div class="stage-flow" role="group" aria-label="Pipeline stages">
+          <button
+            data-stage="ingestion"
+            class="stage-node selected"
+            aria-pressed="true"
+          >
+            <span>PDF files</span><strong>Ingest</strong
+            ><small>Content-addressed input</small></button
+          ><button
+            data-stage="extraction"
+            class="stage-node"
+            aria-pressed="false"
+          >
+            <span>Raw text + fields</span><strong>Extract</strong
+            ><small>Local rules or LLM</small></button
+          ><button
+            data-stage="validation"
+            class="stage-node"
+            aria-pressed="false"
+          >
+            <span>Quality gates</span><strong>Validate</strong
+            ><small>Rules + source evidence</small></button
+          ><button data-stage="storage" class="stage-node" aria-pressed="false">
+            <span>SQLite tables</span><strong>Persist</strong
+            ><small>Atomic, normalized output</small></button
+          ><button
+            data-stage="delivery"
+            class="stage-node"
+            aria-pressed="false"
+          >
+            <span>Human review</span><strong>Deliver</strong
+            ><small>Query, inspect, export</small>
+          </button>
+        </div>
+        <div class="stage-detail" aria-live="polite">
+          <div>
+            <h3 id="stage-title">Ingest once, identify by content.</h3>
+            <p id="stage-description">
+              PDF bytes are hashed with SHA-256. A run also records the
+              extraction mode, model, pipeline version and policy fingerprint.
+              Repeated submissions reuse successful results for that
+              configuration.
+            </p>
+          </div>
+          <code id="stage-code">documents · runs · batch_items</code>
+        </div>
+      </section>
+      <section class="case-section">
+        <div class="section-heading-row">
+          <div>
+            <div class="section-kicker">MEASURED, WITH LIMITS</div>
+            <h2>Show the misses alongside the matches.</h2>
+          </div>
+          <a
+            class="text-link"
+            href="/api/evaluation"
+            target="_blank"
+            rel="noopener"
+            >Read the evaluation JSON</a
+          >
+        </div>
+        <p id="evaluation-context" class="section-description">
+          Loading the checked-in evaluation report…
+        </p>
+        <div class="metric-grid">
+          <article>
+            <span>Field value exact match</span
+            ><strong id="metric-exact">—</strong
+            ><small id="metric-exact-count">Awaiting measured report</small>
+          </article>
+          <article>
+            <span>Non-null value recall</span
+            ><strong id="metric-recall">—</strong
+            ><small id="metric-recall-count">Awaiting measured report</small>
+          </article>
+          <article>
+            <span>False supported fields</span
+            ><strong id="metric-false">—</strong
+            ><small>Wrong or ungrounded values marked supported</small>
+          </article>
+          <article>
+            <span>LLM usage in this report</span
+            ><strong id="metric-mode">—</strong
+            ><small id="metric-mode-note">Mode disclosed from the report</small>
+          </article>
+        </div>
+        <div class="evaluation-caveat">
+          <strong
+            >A development benchmark, not a production accuracy claim.</strong
+          >
+          <p>
+            Eight authored fictional contracts cover labelled English and
+            Portuguese, narrative wording, wrapped clauses, ambiguous dates and
+            conflicting fields. Answers are specified separately from the
+            extractor. This small corpus is visible during development; it is
+            not an unseen test set.
+          </p>
+        </div>
+        <div
+          id="benchmark-failures"
+          class="benchmark-failures"
+          aria-live="polite"
+        ></div>
+      </section>
+      <section class="case-section engineering-decisions">
+        <div>
+          <div class="section-kicker">OPERATING THE WORKFLOW</div>
+          <h2>The useful details<br /> are in the recovery.</h2>
+          <p>
+            Processing failures and quality findings have different
+            destinations. A document can finish processing successfully and
+            still require a human decision.
+          </p>
+          <a href="/pipeline" class="button button-outline"
+            >Inspect runs & lineage</a
+          >
+        </div>
+        <div class="decision-list">
+          <article>
+            <h3>Idempotency with configuration identity</h3>
+            <p>
+              Same PDF and configuration: reuse the result. Change the model,
+              prompt or policy fingerprint: create a separate versioned run.
+            </p>
+          </article>
+          <article>
+            <h3>Recoverable, bounded attempts</h3>
+            <p>
+              A worker claims a five-minute lease. Expired claims can be
+              resumed, and stale workers cannot commit over a new owner. Each
+              run allows at most three attempts.
+            </p>
+          </article>
+          <article>
+            <h3>Atomic output and quality quarantine</h3>
+            <p>
+              Fields, evidence, findings and completion state commit in one
+              transaction. Records requiring review remain outside the
+              accepted-data view.
+            </p>
+          </article>
+          <article>
+            <h3>Provider usage stays explicit</h3>
+            <p>
+              The optional OpenAI adapter records reported token usage. No paid
+              extraction has been verified here; provider cost and real-world
+              accuracy remain unmeasured.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="case-section deliverable-section">
+        <div class="section-kicker">WHAT THIS DEMONSTRATES</div>
+        <h2>A service a team can inspect and operate.</h2>
+        <div class="deliverable-grid">
+          <article>
+            <span>Data engineering</span>
+            <h3>From raw documents to SQL</h3>
+            <p>
+              Batch ingestion, typed extraction, normalized tables, lineage,
+              quality gates and queryable outputs.
+            </p>
+          </article>
+          <article>
+            <span>AI integration</span>
+            <h3>Inference with an audit trail</h3>
+            <p>
+              Structured model output, explicit uncertainty, source quotes,
+              provider errors and an independent scoring harness.
+            </p>
+          </article>
+          <article>
+            <span>Delivery</span>
+            <h3>Reproduce the result</h3>
+            <p>
+              CLI commands, SQL queries, fictional fixtures, automated tests,
+              evaluation artifacts and a review interface.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="scope-note">
+        <h2>Scope of this implementation</h2>
+        <p>
+          Local portfolio demonstration. Batch processing stores PDFs, extracted
+          text and results in a local SQLite database. Single-document review
+          remains transient. There is no OCR, authentication, legal advice or
+          public deployment. Live LLM quality, provider cost, production load
+          and hostile-PDF isolation have not been verified.
+        </p>
+      </section>
+      <footer class="engineering-footer">
+        <span>AI Contract Intelligence / Engineering portfolio</span>
+        <div>
+          <a href="/pipeline">Pipeline workspace</a
+          ><a href="/docs">API reference</a>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

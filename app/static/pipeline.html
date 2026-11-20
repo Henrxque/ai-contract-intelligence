@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pipeline workspace — Contract Intelligence</title>
+    <link rel="icon" href="/static/favicon.svg" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link rel="stylesheet" href="/static/engineering.css" />
+    <script src="/static/pipeline.js" defer></script>
+  </head>
+  <body class="engineering-page">
+    <header class="engineering-nav">
+      <a href="/case-study" class="engineering-brand"
+        ><span class="engineering-monogram">CI</span
+        ><span
+          >Contract Intelligence<small>DATA ENGINEERING CASE STUDY</small></span
+        ></a
+      >
+      <nav aria-label="Project navigation">
+        <a href="/case-study">Case study</a
+        ><a href="/pipeline" aria-current="page">Pipeline</a
+        ><a href="/">Document review</a><a href="/docs">API</a>
+      </nav>
+    </header>
+    <main class="engineering-main pipeline-main">
+      <section class="pipeline-heading">
+        <div>
+          <div class="eyebrow">BATCH INGESTION / SQL LINEAGE</div>
+          <h1>See the pipeline at work<span>.</span></h1>
+          <p>
+            Persist a batch, inspect its quality, and replay it without
+            duplicating successful results.
+          </p>
+        </div>
+        <button class="button button-outline" id="refresh-pipeline">
+          Refresh runs
+        </button>
+      </section>
+      <section class="pipeline-ingestion">
+        <div>
+          <div class="section-kicker">REPRODUCIBLE DEMONSTRATION</div>
+          <h2>Three contracts. Two quality outcomes.</h2>
+          <p>
+            Process Meridian, Northstar and Atlas through the same pipeline as
+            uploads. Run the batch again to inspect cache reuse.
+          </p>
+          <button class="button button-primary" id="run-demo">
+            Process fictional batch
+          </button>
+          <p class="small-disclosure">
+            Saves three synthetic PDFs and their outputs to local SQLite. No LLM
+            call.
+          </p>
+        </div>
+        <form id="batch-form">
+          <h2>Process your own batch</h2>
+          <label for="batch-files"
+            >PDF files · Up to 10 files and 10 MB combined</label
+          ><input
+            id="batch-files"
+            name="files"
+            type="file"
+            accept=".pdf,application/pdf"
+            multiple
+            required
+          /><label for="batch-mode">Extraction mode</label
+          ><select id="batch-mode">
+            <option value="local">Local labelled-field rules</option>
+            <option id="openai-option" value="openai" disabled>
+              OpenAI · Not configured
+            </option></select
+          ><label class="pipeline-consent"
+            ><input id="persist-consent" type="checkbox" required />I agree to
+            save these PDFs, extracted text and results in the local pipeline
+            database.</label
+          ><label class="pipeline-consent" id="provider-consent-row" hidden
+            ><input id="provider-consent" type="checkbox" />I agree to send the
+            extracted document text to OpenAI.</label
+          ><button
+            class="button button-outline"
+            id="process-upload"
+            type="submit"
+          >
+            Process & persist batch
+          </button>
+        </form>
+      </section>
+      <div
+        id="pipeline-message"
+        class="pipeline-message"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+      <div id="pipeline-error" class="error-banner" role="alert" hidden></div>
+      <section
+        class="metric-grid pipeline-metrics"
+        aria-label="Persisted database counts"
+      >
+        <article>
+          <span>Unique documents</span><strong id="count-documents">—</strong
+          ><small>Identified by PDF SHA-256</small>
+        </article>
+        <article>
+          <span>Completed analyses</span><strong id="count-analyses">—</strong
+          ><small id="count-attempts">Awaiting database snapshot</small>
+        </article>
+        <article>
+          <span>Records requiring review</span
+          ><strong id="count-review">—</strong
+          ><small>Excluded from accepted-data view</small>
+        </article>
+        <article>
+          <span>Normalized fields</span><strong id="count-fields">—</strong
+          ><small id="count-evidence">Awaiting database snapshot</small>
+        </article>
+      </section>
+      <section class="batch-outcome" id="batch-outcome" hidden>
+        <div>
+          <div class="section-kicker">LATEST SUBMISSION</div>
+          <h2 id="batch-title"></h2>
+          <p id="batch-detail"></p>
+        </div>
+        <code id="batch-id"></code>
+      </section>
+      <section class="runs-section">
+        <div class="section-heading-row">
+          <div>
+            <div class="section-kicker">PROCESSING HISTORY</div>
+            <h2>Runs, quality gates, and recovery.</h2>
+          </div>
+          <span class="storage-pill">SQLite · Local persistence</span>
+        </div>
+        <p class="section-description">
+          Processing success means the result was committed. Quality status
+          determines whether its fields enter the accepted-data view.
+        </p>
+        <div class="run-table-wrapper">
+          <table class="run-table">
+            <thead>
+              <tr>
+                <th scope="col">Document / run</th>
+                <th scope="col">Processing</th>
+                <th scope="col">Data quality</th>
+                <th scope="col">Attempts</th>
+                <th scope="col">Inspect</th>
+              </tr>
+            </thead>
+            <tbody id="runs-body">
+              <tr>
+                <td colspan="5">Loading persisted runs…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section class="sql-section">
+        <div>
+          <div class="section-kicker">QUERY THE DELIVERY</div>
+          <h2>Accepted data has a clear boundary.</h2>
+          <p>
+            <code>accepted_contract_fields</code> contains supported fields from
+            contracts whose checks passed. Contracts requiring review remain in
+            <code>quality_quarantine</code>. Failed processing attempts do not
+            create partial normalized output.
+          </p>
+        </div>
+        <pre>
+SELECT field_key, value, status
+FROM accepted_contract_fields
+WHERE field_key IN (
+  'party_a', 'party_b', 'total_value'
+);
+
+SELECT field_key, value, status
+FROM quality_quarantine
+WHERE status != 'supported';</pre
+        >
+      </section>
+      <section class="scope-note">
+        <h2>Local data handling</h2>
+        <p>
+          Batch mode saves original PDF bytes, raw text, extractor output,
+          normalized fields, evidence and run history to the configured local
+          SQLite database. It is excluded from Git. Records remain until you
+          remove the database and its WAL/SHM files with the server stopped.
+          Keep confidential data out of shared demonstrations. Use
+          <a href="/">single-document review</a> for transient processing.
+        </p>
+      </section>
+      <footer class="engineering-footer">
+        <span>Pipeline v2 / Explicit review, traceable output</span>
+        <div>
+          <a href="/case-study">Read the engineering case study</a
+          ><a href="/docs">API reference</a>
+        </div>
+      </footer>
+    </main>
+    <dialog id="lineage-dialog" class="lineage-dialog">
+      <div class="dialog-heading">
+        <div>
+          <div class="eyebrow">SOURCE TO OUTPUT</div>
+          <h2 id="lineage-title">Run lineage</h2>
+        </div>
+        <button id="close-lineage" class="button button-outline button-small">
+          Close
+        </button>
+      </div>
+      <div class="lineage-tabs" role="tablist" aria-label="Lineage views">
+        <button
+          data-lineage-view="summary"
+          role="tab"
+          aria-selected="true"
+          aria-controls="lineage-output"
+        >
+          Run & attempts</button
+        ><button
+          data-lineage-view="raw"
+          role="tab"
+          aria-selected="false"
+          aria-controls="lineage-output"
+          tabindex="-1"
+        >
+          Raw staging</button
+        ><button
+          data-lineage-view="result"
+          role="tab"
+          aria-selected="false"
+          aria-controls="lineage-output"
+          tabindex="-1"
+        >
+          Validated output
+        </button>
+      </div>
+      <pre id="lineage-output" role="tabpanel" tabindex="0"></pre>
+      <div class="lineage-actions">
+        <label for="saved-export-format">Saved result export</label
+        ><select id="saved-export-format">
+          <option value="json">JSON</option>
+          <option value="csv">CSV</option>
+          <option value="xlsx">Excel</option></select
+        ><button id="export-saved" class="button button-primary" disabled>
+          Download result
+        </button>
+      </div>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+{
+  "dataset_id": "synthetic-contracts-v1",
+  "version": "1.0",
+  "description": "Eight authored synthetic documents with manually specified canonical answers. Development benchmark, not an unseen real-world accuracy study.",
+  "annotation_policy": "Verbatim clause wording; canonical dates and positive decimal amounts; preserve invalid source values. First candidate for conflicting fields with uncertain status. All eleven fields are annotated.",
+  "cases": [
+    {
+      "filename": "complete-agreement.pdf",
+      "sha256": "3be7f8bed85de7f1362938e85ea8c5634755a8947b371fff766f21b27586c610",
+      "expected_values": {
+        "party_a": "Meridian Data Works Ltd.",
+        "party_b": "Harbor Retail Group Inc.",
+        "effective_date": "2026-01-15",
+        "end_date": "2026-12-31",
+        "total_value": "72000.00",
+        "currency": "USD",
+        "payment_terms": "Invoices are payable within 30 days of receipt.",
+        "governing_law": "Laws of England and Wales.",
+        "termination": "Either party may terminate with 60 days written notice.",
+        "confidentiality": "Non-public information must remain confidential for two years.",
+        "liability": "Aggregate liability is capped at the total fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "All fields explicit in labelled English."
+    },
+    {
+      "filename": "northstar-services.pdf",
+      "sha256": "9e756ca6f5076d523885f2e63a801f013a69b07db840b3a64a6b955e0c30e4dc",
+      "expected_values": {
+        "party_a": "Northstar Analytics Ltd.",
+        "party_b": "Acme Digital Studio Inc.",
+        "effective_date": "2026-02-01",
+        "end_date": null,
+        "total_value": "48000.00",
+        "currency": "USD",
+        "payment_terms": "Within 30 or 60 days of invoice, to be confirmed.",
+        "governing_law": null,
+        "termination": "Either party may terminate with 30 days written notice.",
+        "confidentiality": "Both parties shall protect non-public business information.",
+        "liability": "Liability is limited to fees paid under this agreement."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "missing",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "uncertain",
+        "governing_law": "missing",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Missing fields and ambiguous payment wording."
+    },
+    {
+      "filename": "conflicting-agreement.pdf",
+      "sha256": "7c748830cfa6930a9125b2f09bb9ed03e5c7cbfc201e04409e144072ea834285",
+      "expected_values": {
+        "party_a": "Atlas Systems Ltd.",
+        "party_b": "Juniper Design Inc.",
+        "effective_date": "2026-06-01",
+        "end_date": "2026-01-01",
+        "total_value": "-1200.00",
+        "currency": "$",
+        "payment_terms": "Within 15 days of invoice.",
+        "governing_law": "Laws of England and Wales.",
+        "termination": "Either party may terminate with 30 days written notice.",
+        "confidentiality": "Both parties shall protect confidential information.",
+        "liability": "Aggregate liability is capped at fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "invalid",
+        "total_value": "invalid",
+        "currency": "invalid",
+        "payment_terms": "uncertain",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "For conflicting fields, the first explicit candidate is the expected value, with uncertainty preserved."
+    },
+    {
+      "filename": "portuguese-agreement.pdf",
+      "sha256": "3b5ee61c89c1ed1ca59d8e5ed34c61f017553f06e024e65539fe4f252f8bcaa1",
+      "expected_values": {
+        "party_a": "Aurora Dados Ltda.",
+        "party_b": "Horizonte Comercio Ltda.",
+        "effective_date": "2026-01-15",
+        "end_date": "2026-12-31",
+        "total_value": "1500.00",
+        "currency": "BRL",
+        "payment_terms": "Pagamento em ate 15 dias do recebimento.",
+        "governing_law": "Leis da Republica Federativa do Brasil.",
+        "termination": "Qualquer parte pode rescindir mediante aviso de 30 dias.",
+        "confidentiality": "As partes devem proteger informacoes confidenciais.",
+        "liability": "Limitada ao total de honorarios pagos."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Labelled Portuguese with explicit month names and Brazilian amount separators."
+    },
+    {
+      "filename": "prose-agreement.pdf",
+      "sha256": "0c5cbc309cafe2ded72d3edec078183c1b0268dd447d8bb461c14b8ac02c6d3b",
+      "expected_values": {
+        "party_a": "Meridian Data Works Ltd.",
+        "party_b": "Harbor Retail Group Inc.",
+        "effective_date": "2026-01-15",
+        "end_date": "2026-12-31",
+        "total_value": "72000.00",
+        "currency": "USD",
+        "payment_terms": "Invoices are payable within 30 days of receipt.",
+        "governing_law": "laws of England and Wales",
+        "termination": "Either party may terminate with 60 days written notice.",
+        "confidentiality": "Non-public information must remain confidential for two years.",
+        "liability": "Aggregate liability is capped at the total fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Narrative phrasing without supported labels. Intentionally exposes baseline limitations."
+    },
+    {
+      "filename": "wrapped-agreement.pdf",
+      "sha256": "34134f581f387eb43ff90a21faca25e5e2328327b4d6ddf46cb17c0e38b34568",
+      "expected_values": {
+        "party_a": "Meridian Data Works Ltd.",
+        "party_b": "Harbor Retail Group Inc.",
+        "effective_date": "2026-01-15",
+        "end_date": "2026-12-31",
+        "total_value": "72000.00",
+        "currency": "USD",
+        "payment_terms": "Invoices are payable within 30 days unless disputed in writing within seven days.",
+        "governing_law": "Laws of England and Wales.",
+        "termination": "Either party may terminate with 60 days written notice.",
+        "confidentiality": "Non-public information must remain confidential for two years.",
+        "liability": "Aggregate liability is capped at the total fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Full qualification must be preserved. Partial extraction is an error even when flagged uncertain."
+    },
+    {
+      "filename": "ambiguous-date-agreement.pdf",
+      "sha256": "d07b639637fa1906e496cd41b195357fd2fbbe4285e6d4de5e244002ff3bc7ac",
+      "expected_values": {
+        "party_a": "Meridian Data Works Ltd.",
+        "party_b": "Harbor Retail Group Inc.",
+        "effective_date": "01/02/2026",
+        "end_date": "2026-12-31",
+        "total_value": "72000.00",
+        "currency": "USD",
+        "payment_terms": "Invoices are payable within 30 days of receipt.",
+        "governing_law": "Laws of England and Wales.",
+        "termination": "Either party may terminate with 60 days written notice.",
+        "confidentiality": "Non-public information must remain confidential for two years.",
+        "liability": "Aggregate liability is capped at the total fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "supported",
+        "party_b": "supported",
+        "effective_date": "uncertain",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Date convention cannot be inferred."
+    },
+    {
+      "filename": "conflicting-party-agreement.pdf",
+      "sha256": "02b61044e065727944745daa72535928566b070436808d95d6dc4d67ab3c16c9",
+      "expected_values": {
+        "party_a": "Meridian Data Works Ltd.",
+        "party_b": "Harbor Retail Group Inc.",
+        "effective_date": "2026-01-15",
+        "end_date": "2026-12-31",
+        "total_value": "72000.00",
+        "currency": "USD",
+        "payment_terms": "Invoices are payable within 30 days of receipt.",
+        "governing_law": "Laws of England and Wales.",
+        "termination": "Either party may terminate with 60 days written notice.",
+        "confidentiality": "Non-public information must remain confidential for two years.",
+        "liability": "Aggregate liability is capped at the total fees paid."
+      },
+      "expected_statuses": {
+        "party_a": "uncertain",
+        "party_b": "supported",
+        "effective_date": "supported",
+        "end_date": "supported",
+        "total_value": "supported",
+        "currency": "supported",
+        "payment_terms": "supported",
+        "governing_law": "supported",
+        "termination": "supported",
+        "confidentiality": "supported",
+        "liability": "supported"
+      },
+      "notes": "Conflicting service-provider candidates on different pages."
+    }
+  ]
+}

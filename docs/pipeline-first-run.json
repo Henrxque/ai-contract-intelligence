@@ -1,0 +1,107 @@
+{
+  "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+  "mode": "local",
+  "sample": 1,
+  "created_at": "2026-11-20T18:19:44.340749+00:00",
+  "items": [
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 0,
+      "input_filename": "ambiguous-date-agreement.pdf",
+      "run_id": "d8f63eaa83db4121811bb3a54d397ccd",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 1,
+      "input_filename": "complete-agreement.pdf",
+      "run_id": "d6e03a89ea644772a5c8267547a9872e",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "checks_passed"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 2,
+      "input_filename": "conflicting-agreement.pdf",
+      "run_id": "849e66d69c374d2db4c4a2cfd6b87de6",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 3,
+      "input_filename": "conflicting-party-agreement.pdf",
+      "run_id": "1be0741123614593b9670f0008fab39f",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 4,
+      "input_filename": "northstar-services.pdf",
+      "run_id": "ca4ff41b3e854b6ea0246e40a3d163af",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 5,
+      "input_filename": "portuguese-agreement.pdf",
+      "run_id": "7abb29339fd94a4080878132f1f970bf",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "checks_passed"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 6,
+      "input_filename": "prose-agreement.pdf",
+      "run_id": "8e0b539c78734b2db96ea3823ca733e3",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    },
+    {
+      "batch_id": "0eea5b97f68c416d83b6679d4ad99200",
+      "ordinal": 7,
+      "input_filename": "wrapped-agreement.pdf",
+      "run_id": "6801ad81e65845278ef6672a154ce9d6",
+      "disposition": "processed",
+      "observed_state": "succeeded",
+      "current_state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "quality_status": "needs_review"
+    }
+  ],
+  "processed": 8,
+  "cached": 0,
+  "failed": 0
+}

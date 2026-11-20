@@ -1,0 +1,8 @@
+* text=auto eol=lf
+
+# Preserve document bytes: benchmark identity depends on the original PDF hashes.
+*.pdf binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.xlsx binary

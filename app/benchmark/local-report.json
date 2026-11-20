@@ -1,0 +1,1102 @@
+{
+  "report_version": "1.0",
+  "dataset_id": "synthetic-contracts-v1",
+  "dataset_version": "1.0",
+  "manifest_sha256": "5041cf991149f5ca7b20f96e0cdd18b4ef7a64957a7f69f4f4e99d949dc80c95",
+  "pipeline_version": "2.0.0",
+  "mode": "local",
+  "model": null,
+  "measured_at": "2026-11-20T18:02:16.602371+00:00",
+  "document_count": 8,
+  "field_count": 88,
+  "duration_ms": 126,
+  "metrics": {
+    "value_exact_match": {
+      "numerator": 76,
+      "denominator": 88,
+      "rate": 0.863636
+    },
+    "non_null_value_precision": {
+      "numerator": 74,
+      "denominator": 75,
+      "rate": 0.986667
+    },
+    "non_null_value_recall": {
+      "numerator": 74,
+      "denominator": 86,
+      "rate": 0.860465
+    },
+    "status_accuracy": {
+      "numerator": 76,
+      "denominator": 88,
+      "rate": 0.863636
+    },
+    "flagged_issue_recall": {
+      "numerator": 7,
+      "denominator": 7,
+      "rate": 1.0
+    },
+    "quote_grounding": {
+      "numerator": 75,
+      "denominator": 75,
+      "rate": 1.0
+    },
+    "false_supported_fields": 0,
+    "missing_predictions": 11
+  },
+  "usage": null,
+  "usage_document_coverage": {
+    "numerator": 0,
+    "denominator": 8,
+    "rate": 0.0
+  },
+  "cost_usd": null,
+  "limitations": [
+    "Small authored synthetic development benchmark, not an unseen real-world accuracy estimate.",
+    "Local mode uses deterministic rules; no LLM call or provider cost occurred in this report.",
+    "Exact match accepts whitespace/case normalization only. Equivalent paraphrases count as mismatches.",
+    "Quote grounding measures text correspondence, not semantic correctness."
+  ],
+  "documents": [
+    {
+      "filename": "complete-agreement.pdf",
+      "document_id": "3be7f8bed85de7f1362938e85ea8c5634755a8947b371fff766f21b27586c610",
+      "elapsed_ms": 65,
+      "quality_status": "checks_passed",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Meridian Data Works Ltd.",
+          "actual_value": "Meridian Data Works Ltd.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Harbor Retail Group Inc.",
+          "actual_value": "Harbor Retail Group Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-01-15",
+          "actual_value": "2026-01-15",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": "2026-12-31",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "72000.00",
+          "actual_value": "72000.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": "USD",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Invoices are payable within 30 days of receipt.",
+          "actual_value": "Invoices are payable within 30 days of receipt.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Laws of England and Wales.",
+          "actual_value": "Laws of England and Wales.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 60 days written notice.",
+          "actual_value": "Either party may terminate with 60 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Non-public information must remain confidential for two years.",
+          "actual_value": "Non-public information must remain confidential for two years.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at the total fees paid.",
+          "actual_value": "Aggregate liability is capped at the total fees paid.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "northstar-services.pdf",
+      "document_id": "9e756ca6f5076d523885f2e63a801f013a69b07db840b3a64a6b955e0c30e4dc",
+      "elapsed_ms": 8,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Northstar Analytics Ltd.",
+          "actual_value": "Northstar Analytics Ltd.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Acme Digital Studio Inc.",
+          "actual_value": "Acme Digital Studio Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-02-01",
+          "actual_value": "2026-02-01",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": null,
+          "actual_value": null,
+          "expected_status": "missing",
+          "actual_status": "missing",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "48000.00",
+          "actual_value": "48000.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": "USD",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Within 30 or 60 days of invoice, to be confirmed.",
+          "actual_value": "Within 30 or 60 days of invoice, to be confirmed.",
+          "expected_status": "uncertain",
+          "actual_status": "uncertain",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": null,
+          "actual_value": null,
+          "expected_status": "missing",
+          "actual_status": "missing",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 30 days written notice.",
+          "actual_value": "Either party may terminate with 30 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Both parties shall protect non-public business information.",
+          "actual_value": "Both parties shall protect non-public business information.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Liability is limited to fees paid under this agreement.",
+          "actual_value": "Liability is limited to fees paid under this agreement.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "conflicting-agreement.pdf",
+      "document_id": "7c748830cfa6930a9125b2f09bb9ed03e5c7cbfc201e04409e144072ea834285",
+      "elapsed_ms": 8,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Atlas Systems Ltd.",
+          "actual_value": "Atlas Systems Ltd.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Juniper Design Inc.",
+          "actual_value": "Juniper Design Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-06-01",
+          "actual_value": "2026-06-01",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-01-01",
+          "actual_value": "2026-01-01",
+          "expected_status": "invalid",
+          "actual_status": "invalid",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "-1200.00",
+          "actual_value": "-1200.00",
+          "expected_status": "invalid",
+          "actual_status": "invalid",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "$",
+          "actual_value": "$",
+          "expected_status": "invalid",
+          "actual_status": "invalid",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Within 15 days of invoice.",
+          "actual_value": "Within 15 days of invoice.",
+          "expected_status": "uncertain",
+          "actual_status": "uncertain",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Laws of England and Wales.",
+          "actual_value": "Laws of England and Wales.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 30 days written notice.",
+          "actual_value": "Either party may terminate with 30 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Both parties shall protect confidential information.",
+          "actual_value": "Both parties shall protect confidential information.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at fees paid.",
+          "actual_value": "Aggregate liability is capped at fees paid.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "portuguese-agreement.pdf",
+      "document_id": "3b5ee61c89c1ed1ca59d8e5ed34c61f017553f06e024e65539fe4f252f8bcaa1",
+      "elapsed_ms": 7,
+      "quality_status": "checks_passed",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Aurora Dados Ltda.",
+          "actual_value": "Aurora Dados Ltda.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Horizonte Comercio Ltda.",
+          "actual_value": "Horizonte Comercio Ltda.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-01-15",
+          "actual_value": "2026-01-15",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": "2026-12-31",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "1500.00",
+          "actual_value": "1500.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "BRL",
+          "actual_value": "BRL",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Pagamento em ate 15 dias do recebimento.",
+          "actual_value": "Pagamento em ate 15 dias do recebimento.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Leis da Republica Federativa do Brasil.",
+          "actual_value": "Leis da Republica Federativa do Brasil.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Qualquer parte pode rescindir mediante aviso de 30 dias.",
+          "actual_value": "Qualquer parte pode rescindir mediante aviso de 30 dias.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "As partes devem proteger informacoes confidenciais.",
+          "actual_value": "As partes devem proteger informacoes confidenciais.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Limitada ao total de honorarios pagos.",
+          "actual_value": "Limitada ao total de honorarios pagos.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "prose-agreement.pdf",
+      "document_id": "0c5cbc309cafe2ded72d3edec078183c1b0268dd447d8bb461c14b8ac02c6d3b",
+      "elapsed_ms": 8,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Meridian Data Works Ltd.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Harbor Retail Group Inc.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-01-15",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "72000.00",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Invoices are payable within 30 days of receipt.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "laws of England and Wales",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 60 days written notice.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Non-public information must remain confidential for two years.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at the total fees paid.",
+          "actual_value": null,
+          "expected_status": "supported",
+          "actual_status": "missing",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": null,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "wrapped-agreement.pdf",
+      "document_id": "34134f581f387eb43ff90a21faca25e5e2328327b4d6ddf46cb17c0e38b34568",
+      "elapsed_ms": 7,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Meridian Data Works Ltd.",
+          "actual_value": "Meridian Data Works Ltd.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Harbor Retail Group Inc.",
+          "actual_value": "Harbor Retail Group Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-01-15",
+          "actual_value": "2026-01-15",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": "2026-12-31",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "72000.00",
+          "actual_value": "72000.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": "USD",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Invoices are payable within 30 days unless disputed in writing within seven days.",
+          "actual_value": "Invoices are payable within 30 days",
+          "expected_status": "supported",
+          "actual_status": "uncertain",
+          "value_match": false,
+          "status_match": false,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Laws of England and Wales.",
+          "actual_value": "Laws of England and Wales.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 60 days written notice.",
+          "actual_value": "Either party may terminate with 60 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Non-public information must remain confidential for two years.",
+          "actual_value": "Non-public information must remain confidential for two years.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at the total fees paid.",
+          "actual_value": "Aggregate liability is capped at the total fees paid.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "ambiguous-date-agreement.pdf",
+      "document_id": "d07b639637fa1906e496cd41b195357fd2fbbe4285e6d4de5e244002ff3bc7ac",
+      "elapsed_ms": 9,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Meridian Data Works Ltd.",
+          "actual_value": "Meridian Data Works Ltd.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Harbor Retail Group Inc.",
+          "actual_value": "Harbor Retail Group Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "01/02/2026",
+          "actual_value": "01/02/2026",
+          "expected_status": "uncertain",
+          "actual_status": "uncertain",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": "2026-12-31",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "72000.00",
+          "actual_value": "72000.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": "USD",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Invoices are payable within 30 days of receipt.",
+          "actual_value": "Invoices are payable within 30 days of receipt.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Laws of England and Wales.",
+          "actual_value": "Laws of England and Wales.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 60 days written notice.",
+          "actual_value": "Either party may terminate with 60 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Non-public information must remain confidential for two years.",
+          "actual_value": "Non-public information must remain confidential for two years.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at the total fees paid.",
+          "actual_value": "Aggregate liability is capped at the total fees paid.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    },
+    {
+      "filename": "conflicting-party-agreement.pdf",
+      "document_id": "02b61044e065727944745daa72535928566b070436808d95d6dc4d67ab3c16c9",
+      "elapsed_ms": 10,
+      "quality_status": "needs_review",
+      "token_usage": null,
+      "fields": [
+        {
+          "field": "party_a",
+          "expected_value": "Meridian Data Works Ltd.",
+          "actual_value": "Meridian Data Works Ltd.",
+          "expected_status": "uncertain",
+          "actual_status": "uncertain",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "party_b",
+          "expected_value": "Harbor Retail Group Inc.",
+          "actual_value": "Harbor Retail Group Inc.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "effective_date",
+          "expected_value": "2026-01-15",
+          "actual_value": "2026-01-15",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "end_date",
+          "expected_value": "2026-12-31",
+          "actual_value": "2026-12-31",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "total_value",
+          "expected_value": "72000.00",
+          "actual_value": "72000.00",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "currency",
+          "expected_value": "USD",
+          "actual_value": "USD",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "payment_terms",
+          "expected_value": "Invoices are payable within 30 days of receipt.",
+          "actual_value": "Invoices are payable within 30 days of receipt.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "governing_law",
+          "expected_value": "Laws of England and Wales.",
+          "actual_value": "Laws of England and Wales.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "termination",
+          "expected_value": "Either party may terminate with 60 days written notice.",
+          "actual_value": "Either party may terminate with 60 days written notice.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "confidentiality",
+          "expected_value": "Non-public information must remain confidential for two years.",
+          "actual_value": "Non-public information must remain confidential for two years.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        },
+        {
+          "field": "liability",
+          "expected_value": "Aggregate liability is capped at the total fees paid.",
+          "actual_value": "Aggregate liability is capped at the total fees paid.",
+          "expected_status": "supported",
+          "actual_status": "supported",
+          "value_match": true,
+          "status_match": true,
+          "quote_grounded": true,
+          "false_supported": false
+        }
+      ]
+    }
+  ]
+}

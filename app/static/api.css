@@ -1,0 +1,90 @@
+.reference {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 38px 26px;
+}
+.reference > .button:first-child {
+  margin-bottom: 36px;
+}
+.reference h1 {
+  font-size: 38px;
+}
+.reference-lead {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #5a6e61;
+  margin: 17px 0 24px;
+}
+.reference section {
+  background: #fff;
+  border: 1px solid #dce5da;
+  border-radius: 10px;
+  padding: 26px;
+  margin-top: 25px;
+}
+.reference h2 {
+  font-size: 22px;
+  font-weight: 550;
+  letter-spacing: -0.5px;
+}
+.reference section p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #586c5e;
+  margin-top: 17px;
+}
+.reference code {
+  font:
+    13px/1.7 Consolas,
+    monospace;
+  color: #315e40;
+  background: #f0f5ec;
+  border-radius: 4px;
+  padding: 2px 5px;
+  overflow-wrap: anywhere;
+}
+.endpoint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+.endpoint strong {
+  font-size: 12px;
+  background: #e4f1df;
+  color: #47733d;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.endpoint code {
+  font-size: 15px;
+  background: transparent;
+}
+.reference pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #183a2e;
+  color: #d2e7c5;
+  font:
+    13px/1.9 Consolas,
+    monospace;
+  padding: 21px;
+  border-radius: 7px;
+  margin: 21px 0 0;
+}
+.state-list {
+  margin: 20px 0 0;
+}
+.state-list dt {
+  font:
+    14px/1.7 Consolas,
+    monospace;
+  color: #41683b;
+  margin-top: 19px;
+}
+.state-list dd {
+  margin: 4px 0 0;
+  color: #60735f;
+  font-size: 15px;
+  line-height: 1.9;
+}

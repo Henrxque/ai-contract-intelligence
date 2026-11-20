@@ -1,0 +1,143 @@
+{
+  "pipeline_version": "2.0.0",
+  "storage": "SQLite",
+  "counts": {
+    "documents": 8,
+    "runs": 8,
+    "attempts": 8,
+    "analyses": 8,
+    "contract_fields": 88,
+    "field_evidence": 77,
+    "review_findings": 21,
+    "batches": 2
+  },
+  "states": {
+    "succeeded": 8
+  },
+  "quality": {
+    "checks_passed": 2,
+    "needs_review": 6
+  },
+  "recent_runs": [
+    {
+      "run_id": "6801ad81e65845278ef6672a154ce9d6",
+      "document_id": "34134f581f387eb43ff90a21faca25e5e2328327b4d6ddf46cb17c0e38b34568",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.858743+00:00",
+      "original_filename": "wrapped-agreement.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 23
+    },
+    {
+      "run_id": "8e0b539c78734b2db96ea3823ca733e3",
+      "document_id": "0c5cbc309cafe2ded72d3edec078183c1b0268dd447d8bb461c14b8ac02c6d3b",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.801584+00:00",
+      "original_filename": "prose-agreement.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 22
+    },
+    {
+      "run_id": "7abb29339fd94a4080878132f1f970bf",
+      "document_id": "3b5ee61c89c1ed1ca59d8e5ed34c61f017553f06e024e65539fe4f252f8bcaa1",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.749198+00:00",
+      "original_filename": "portuguese-agreement.pdf",
+      "quality_status": "checks_passed",
+      "elapsed_ms": 26
+    },
+    {
+      "run_id": "ca4ff41b3e854b6ea0246e40a3d163af",
+      "document_id": "9e756ca6f5076d523885f2e63a801f013a69b07db840b3a64a6b955e0c30e4dc",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.695600+00:00",
+      "original_filename": "northstar-services.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 23
+    },
+    {
+      "run_id": "1be0741123614593b9670f0008fab39f",
+      "document_id": "02b61044e065727944745daa72535928566b070436808d95d6dc4d67ab3c16c9",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.644962+00:00",
+      "original_filename": "conflicting-party-agreement.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 19
+    },
+    {
+      "run_id": "849e66d69c374d2db4c4a2cfd6b87de6",
+      "document_id": "7c748830cfa6930a9125b2f09bb9ed03e5c7cbfc201e04409e144072ea834285",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.598640+00:00",
+      "original_filename": "conflicting-agreement.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 19
+    },
+    {
+      "run_id": "d6e03a89ea644772a5c8267547a9872e",
+      "document_id": "3be7f8bed85de7f1362938e85ea8c5634755a8947b371fff766f21b27586c610",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.547549+00:00",
+      "original_filename": "complete-agreement.pdf",
+      "quality_status": "checks_passed",
+      "elapsed_ms": 25
+    },
+    {
+      "run_id": "d8f63eaa83db4121811bb3a54d397ccd",
+      "document_id": "d07b639637fa1906e496cd41b195357fd2fbbe4285e6d4de5e244002ff3bc7ac",
+      "mode": "local",
+      "provider_model": null,
+      "sample": 1,
+      "state": "succeeded",
+      "attempt_count": 1,
+      "error_code": null,
+      "error_message": null,
+      "updated_at": "2026-11-20T18:19:44.492972+00:00",
+      "original_filename": "ambiguous-date-agreement.pdf",
+      "quality_status": "needs_review",
+      "elapsed_ms": 39
+    }
+  ]
+}
